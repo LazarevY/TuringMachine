@@ -20,10 +20,11 @@ public class TuringMachine {
             stopped = true;
     }
 
-    public TuringMachine(int condition, TuringCommandTable commandTable, char[] tapeBody, int tapePointer) {
+    public TuringMachine(int condition, TuringCommandTable commandTable, Tape tape, int tapePointer) {
         this.condition = condition;
         this.commandTable = commandTable;
-        tape = new Tape(new TapeBlock(tapeBody), tapePointer);
+        this.tape = tape;
+        tape.setPositionPointer(tapePointer);
     }
 
     public boolean isStopped() {

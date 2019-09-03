@@ -21,8 +21,7 @@ public class TuringCommandParser {
      * @return команда машины Тьюринга
      */
     public static TuringCommand parse(String command) throws TuringCommandParserException {
-        Pattern pattern = Pattern.compile(commandRegex);
-        Matcher matcher = pattern.matcher(command);
+        Matcher matcher = Pattern.compile(commandRegex).matcher(command);
 
         if(!matcher.matches()){
             throw new TuringCommandParserException("Invalid command: " + command + "\nCommand template: "+

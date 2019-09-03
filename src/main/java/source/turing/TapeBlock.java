@@ -6,7 +6,7 @@ import java.util.Arrays;
  * класс, реализующий часть ленты
  */
 public class TapeBlock {
-    public static final int TAPE_CAPACITY = 100;
+    public static final int TAPE_CAPACITY = 10;
     private char[] tapeBody;
 
     /**
@@ -34,5 +34,10 @@ public class TapeBlock {
     public TapeBlock(){
         tapeBody = new char[TAPE_CAPACITY];
         Arrays.fill(tapeBody, '0');
+    }
+
+    @Override
+    public String toString() {
+        return new String(tapeBody);
     }
 }

@@ -1,21 +1,25 @@
 package source;
 
-import source.turing.TuringCommandTable;
+import source.turing.Tape;
+
 import source.turing.TuringMachine;
+import source.util.TapeManager;
 import source.util.TuringCommandTableReader;
+
 
 public class Main {
     public static void main(String[] args) {
         try {
-            TuringCommandTable t = TuringCommandTableReader.readTable("src/main/resources/table.txt");
-            TuringMachine machine1 = new TuringMachine(1, t,
-                    new char[]{'0','0','0','1','1','1','0'},
-                    3);
-            while (!machine1.isStopped()){
-                machine1.step();
-            }
-            System.out.println();
-        } catch (Exception e) {
+            Tape tape = new TapeManager('0').read("src/main/resources/tape2.txt");
+            System.out.println(tape.toString());
+            TuringMachine machine = new TuringMachine(1, TuringCommandTableReader.
+                    readTable("src/main/resources/table2.txt"),
+                    tape, 2);
+            while (!machine.isStopped())
+                machine.step();
+            System.out.println(tape.toString());
+        }
+         catch (Exception e) {
             e.printStackTrace();
         }
     }
